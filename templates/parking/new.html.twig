@@ -1,0 +1,50 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url({{asset('assets/bootstrap/images/bg/5.jpg')}}) no-repeat scroll center center / cover ;">
+            <div class="container">
+                <div class="row">
+                    <div class=" loginko htc__login__register__wrap">
+                            <h6 style="text-color:initial !important   " >{{datenow ? datenow|format_datetime() }}</h6>
+                            <p> Stationner au prking N°: <span> {{app.session.get('place').noPark }}  </span> <p>
+              
+                    </div>
+                </div>
+                <!-- Start Login Register Content -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="htc__login__register__wrap">
+                            <!-- Start Single Content -->
+                            <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+                            {% if message is defined %}
+                               <h1>{{  message }}</h1>
+                               {% endif %}
+                                {{ form_start(form,{ 'attr': {'class': 'login'} })}}
+
+                                    {{form_widget(form.debut, { 'attr': {'placeholder': 'Tarif*'} }) }} 
+                                   {{form_widget(form.place, { 'attr': {'placeholder': 'Tarif*'} }) }}
+                                    {{form_widget(form.tarif, { 'attr': {'placeholder': 'Tarif*'} }) }}
+                                    
+                                    {{form_widget(form.matricule,  { 'attr': {'placeholder': ' Matricule de Votre voiture*'} }) }}
+
+                                    <div class="htc__login__btn mt--30">
+                                        <button class="btn">{{ button_label|default('Valider') }}</button>
+                                        
+                                    </div>
+
+
+                                {{ form_end(form) }}
+                              
+                                
+ 
+                            </div>
+
+                            <!-- End Single Content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Login Register Content -->
+            </div>
+        </div>
+{% endblock %}
+       

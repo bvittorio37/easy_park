@@ -1,0 +1,101 @@
+
+
+
+
+- parking possède plusieurs tarif ( ex: 15mn , 30mn , 1h, … )
+A faire :
+- ajout de place de parking
+    .Table Place: id, NoPark
+    .Fonctions: Ajout de table
+
+- ajout voiture sur une place de parking
+    . Table Parking: id, NoMatricule, Parking , Tarif, entree, sortie,
+    . Fonctions:
+        - Create : Pour ajouter
+        - Update : Pour prolonger
+        - Suprimer: Pour Terminer le séjour
+
+- afficher amende ( forfaitaire , ex: 150000ar) après dépassement de délai
+        - table Amende: id, prix, heure 
+     /* amende par parking */
+- pdf ticket parking
+     DateHeure (impression)
+     NoMatricule
+     Date:Heure (entree)
+     Tarif
+
+1. Profil Administrateur
+a. Ajour de place de parking (Ok)
+2. Profil Client ( après inscription et login)
+a. Inscription et login (ok)
+b. Voir liste des places de parking 
+c. Ajout de voiture sur une place de parking 
+d. Enlever voiture sur une place de parking
+e. Afficher amende ( forfaitaire , ex: 150000ar) après dépassement de délai
+f. PDF ticket parking (exemple ci-dessous
+
+. Profil Administrateur
+a. Gestion des tarifs
+b. Validation demande
+    .Liste des demandes
+    .Valider
+
+2. Profil client
+a. Ajout de monnaie dans le porte feuille ( à valider par l’administrateur)
+    - Ajout de demande
+    // input Somme et validation -> fonction demander
+    - Etat Portefeuille (get portefuille where idClient)
+    // Show portefeuil
+    
+b. Paiement place de parking
+    - payment 
+
+
+
+
+    --------------------------------------------
+1.Profil Administrateur
+    a. Ajour de place de parking (OK)
+2. Profil Client ( après inscription et login)
+    a. Inscription et login  (Ok)
+    b. Voir liste des places de parking  (ok)
+        //
+    c. Ajout de voiture sur une place de parking(ok)
+    d. Enlever voiture sur une place de parking(ok)
+    e. Afficher amende ( forfaitaire , ex: 150000ar) après dépassement de délai
+    f. PDF ticket parking (exemple ci-dessous) 
+Travail à faire jour2
+
+
+1. Profil Administrateur
+
+    a. Gestion des tarifs (Ok)
+
+
+2. Profil client
+    a. Ajout de monnaie dans le porte feuille  (Oui)
+
+    b. à valider par l’administrateur (Ok)
+
+    b. Paiement place de parking (Non)
+    // Paiement =somme des Fraisparking +ammendes
+
+
+Travail à faire jour3
+1. Sans connexion ou avec connexion
+    a. Afficher sous forme d’image la disponibilité des places de parking (Tsy ahy)
+    b. Une place de parking aura 3 états uniquement. Afficher différente code (Non)
+couleur pour chaque état
+        i. Libres
+        ii. Occupés
+        iii. En infraction
+    c. Lorsqu’on clique (ou on survole) on a les informations de la place
+        i. Etat
+            1. Si l’état est libre , on doit avoir un bouton/lien pour ajouter une voiture
+        ii. Heure d’arrivée
+        iii. Durée prévue
+        iv. Délai de départ (ex : dans 24mn )
+2. Profil Administrateur
+    a. Pour pourvoir tester, l’administrateur peut spécifier l’heure actuelle (ex :
+13h40). Donc on va regarder la situation des places de parking à partir de 
+cette heure , et non pas l’heure en cours (nowsymfony

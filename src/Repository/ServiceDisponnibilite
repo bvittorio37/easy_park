@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Interval;
+use App\Entity\Place;
+use DateTime;
+
+class ServiceDisponnibilite 
+{
+}

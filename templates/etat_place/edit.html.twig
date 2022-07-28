@@ -1,0 +1,13 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}Desactiver{% endblock %}
+
+{% block body %}
+    <h1>Edit EtatPlace</h1>
+
+    {{ include('etat_place/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_etat_place_index') }}">back to list</a>
+
+    {{ include('etat_place/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url({{asset('assets/bootstrap/images/bg/5.jpg')}}) no-repeat scroll center center / cover ;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <ul class="login__register__menu" role="tablist">
+                            <li role="presentation" class="login active"><a href="#login" role="tab" data-toggle="tab">Faire Versement </a></li>
+                        
+                        </ul>
+                    </div>
+                </div>
+                <!-- Start Login Register Content -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="htc__login__register__wrap">
+                            <!-- Start Single Content -->
+                            <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+                                {{ form_start(form,{ 'attr': {'class': 'login'} })}}
+                                    {{form_widget(form.somme, { 'attr': {'placeholder': 'Inserer Montant*'} }) }}
+                                    
+                                    
+                                    <div class="htc__login__btn mt--30">
+                                        <button class="btn">{{ button_label|default('Valider') }}</button>
+                                        
+                                    </div>
+
+
+                                {{ form_end(form) }}
+                              
+                                
+ 
+                            </div>
+
+                            <!-- End Single Content -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Login Register Content -->
+            </div>
+        </div>
+{% endblock %}
+        

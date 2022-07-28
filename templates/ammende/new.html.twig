@@ -1,0 +1,42 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% form_theme form 'form_div_layout.html.twig' %}
+
+{% block pageName %} 
+Ammende
+{% endblock %}
+
+{% block body %}
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                <div class="card-header">
+                    <h1 class="card-title">Ajouter une nouvelle Ammende</h1>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {{ form_start(form) }}
+                    <div class="card-body">
+                    <div class="form-group">
+                        {{ form_label(form.prix) }}
+                        {{form_widget(form.prix, { 'attr': {'class': 'form-control'} }) }}
+
+                    </div>
+                   
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                {{ form_end(form) }}
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+</section>
+{% endblock %}
+
+
+

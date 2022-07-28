@@ -1,0 +1,175 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Place{% endblock %}
+
+{% block body %}
+    {% set infraction = 0 %}
+    {% set libre = 0 %}
+    {% set occupe = 0 %}
+    {% set desactive = 0 %}
+    {% set total =0 %}
+
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({{asset('assets/bootstrap/images/bg/2.jpg')}}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title"></h2>
+                                <nav class="bradcaump-inner">
+                                  <a class="breadcrumb-item" href="index.html">PARKING</a>
+                                  
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<section class="htc__product__area shop__page ptb--130 bg__white">
+    <div class="container">
+        <div class="htc__product__container">
+
+            <div class="row">
+                <div class="product__list another-product-style">
+                    <h1>{{datenow|date('H:i:s')}}</h1>
+                    {% for place in places %}
+
+                    
+                   {% if place.etat=="Infraction" %}  {% set infraction = infraction + 1 %}{% endif  %}
+                    {% if place.etat=="Occupé" %}  {% set occupe = occupe + 1 %} {% endif  %}
+                    {% if place.etat=="Libre" %}  {% set libre = libre + 1 %} {% endif  %}
+                    {% if place.etat=="Desactive" %}  {% set desactive = desactive + 1 %} {% endif  %}
+                   {% set total = total + 1 %}
+                   
+
+    
+                   
+                
+                            {# {% for pil,place in key %}
+
+                            {% endfor %} #}
+                   
+                        <!-- Start Single Product -->
+                        
+                           <div class="col-md-1 single__pro col-lg-1 cat--1 col-sm-4 col-xs-1">
+                                <div class="product foo">
+                                    <div class="product__inner">
+                                        <div class="pro__thumb">
+                                             <div class="select__color">
+
+                                                <ul class="color__list">
+                                                    <li data-target="#productModal" id="place" data-place="{{place.idplace}}"  class=" place {{place.couleur }}" ><a title="{{place.etat}}">{{place.etat}}"</a></li>
+                                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                </table>     
+                            <!-- End Single Product -->
+                    {% else %}
+           
+                Pas De Place
+          
+        {% endfor %}
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+                         
+    
+{% endblock %}
+{% block javascript %}
+
+{% if app.user %} 
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+<script language = "javascript">  
+      
+        $(document).ready(function(){
+                $('.place').on('click', function(evt){
+                $ancienUrl= $('.btnstationner').attr('href');
+
+                    var idPlace = $(this).data('place');
+                    $.ajax({  
+                    
+                    url:        Routing.generate('acceuil.element', { id: idPlace} ),
+                    type:       'POST',   
+                    dataType:   'json',  
+                    async:      true,  
+                    
+                    success: function(data, status) {  
+                        
+                        $('#numplace').html(data.nopark);
+                        $('#etatplace').html(data.etat);
+                      
+                        if(data.etat=='Libre'){
+                        $('.datearrive').hide();
+                        $('.tarif').hide();
+                        $('.restant').hide();
+                        $('.nummat').hide();
+                        $('#stationner').show();
+                        $('.btnstationner')
+                        $('.btnstationner').attr('href',$ancienUrl.concat(idPlace));
+                       
+                            //$("#w3s").attr("href", "https://www.w3schools.com/jquery/");
+                        }else{
+                        $('.datearrive').show();
+                        $('.tarif').show();
+                        $('.nummat').show();
+                        $('#datearrive').html(data.datearrive);
+                        $('#tarif').html(data.tarif);
+                        $('#nummat').html(data.numero);
+                         $('.restant').show();
+                        $('#restant').html(data.restant);
+
+                          // cacher btn
+                        $('#stationner').hide();
+                        $()
+                        }
+                       // $('.modal').data
+                        $(".modal").attr("class", "modal fade in");
+                        $(".modal").attr("style", "display: block;");
+                        // Fermer
+                        $('#idio').on('click', function(event){
+                            $(".modal").attr("class", "modal fade ");
+                            $(".modal").attr("style", "");
+
+                            /// Vidage 
+                             $('#numplace').html("");
+                            $('#etatplace').html("");
+                            $('#nummat').html("");
+                            $('#datearrive').html("");
+                            $('#tarif').html("");
+                            $('#restant').html("");
+                            $('#stationner').show();
+
+                            //averina amin ny toerany ny URL
+                            $('.btnstationner').attr('href',$ancienUrl);
+                                                     
+                        });
+                        console.log(data);  
+                        },
+                    error : function(xhr, textStatus, errorThrown) {  
+                        
+                        alert('Ajax request failed.');  
+                    }              
+                });
+            });
+        });
+     
+   </script> 
+
+   {% endif  %}
+   
+   {% endblock %}
+
+   
+                       

@@ -1,0 +1,69 @@
+{% extends 'admintemplate.html.twig' %}
+
+{% block title %}Etat Parking{% endblock %}
+
+{% block body %}
+   
+     <section class="content">
+      <div class="container-fluid">
+              <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title mr-5">Etat Parking</h3>
+                
+                
+               
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Matricule</th>
+                      <th>Date Debut</th>
+                      <th>Duree</th>
+                      <th>DateFin</th>
+                      <th>Depart</th>
+                      <th></th>
+                      <th>Prix PArking</th>
+                      <th>Ammende</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                {% for parking in parkings %}
+                    <tr>
+                        <td><a href="{{ path('ticket_parking', {'id': parking.id}) }}">{{ parking.matricule }}</a></td>
+                        <td>{{ parking.debut ? parking.debut|date('H:i:s') }}</td>
+                        <td>{{ parking.tarif.temps|date('H:i:s') }}</td>
+                        <td>{{ parking.getDateFin()|date('H:i:s')  }}</td>
+                        <td>    <td>
+                        <td>{{ parking.tarif.prix }}</td>
+                        <td>{{ parking.ammende}}</td>
+                    </tr>
+                {% endfor %}
+                 {% for historique in historiques %}
+                    <tr>
+                        <td><a href="{{ path('ticket_historique', {'id': historique.id}) }}">{{ historique.matricule }}</a></td>
+                        <td>{{ historique.debut ? historique.debut|date('H:i:s') }}</td>
+                        <td>{{ historique.tarif.temps|date('H:i:s') }}</td>
+                        <td>{{ historique.getDateFin()|date('H:i:s')}}</td>
+                        <td>{{ historique.depart|date('H:i:s')}}<td>
+                        <td>{{ historique.tarif.prix }}</td>
+                        <td>{{ historique.ammende}}</td>
+                    </tr>
+                {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+{% endblock %}
+

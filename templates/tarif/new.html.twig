@@ -1,0 +1,46 @@
+
+
+{% extends 'adminTemplate.html.twig' %}
+
+
+{% block pageName %} 
+Tarif
+{% endblock %}
+
+{% block body %}
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h1 class="card-title">Ajouter un Tarif</h1>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    {{ form_start(form) }}
+                        <div class="card-body">
+                            <div class="form-group">
+                                {{form_label(form.temps, null, { 'attr': {'class': 'form-label'} }) }}
+                                {{form_widget(form.temps, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                            <div class="form-group">
+                                {{form_label(form.prix, null, { 'attr': {'class': 'form-label'} }) }}
+                                {{form_widget(form.prix, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                    </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

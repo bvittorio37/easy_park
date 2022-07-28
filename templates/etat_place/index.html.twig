@@ -1,0 +1,32 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}EtatPlace {% endblock %}
+
+{% block body %}
+    <h1>EtatPlace de index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat_place in etat_places %}
+            <tr>
+                <td>{{ etat_place.id }}</td>
+                <td>
+                    <a href="{{ path('app_etat_place_edit', {'id': etat_place.id}) }}">Desactiver</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etat_place_new') }}">Create new</a>
+{% endblock %}

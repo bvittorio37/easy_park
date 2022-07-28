@@ -1,0 +1,59 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block pageName %}Validation des Ajouts Portefeuils{% endblock %}
+
+{% block body %}
+    <section class="content">
+      <div class="container-fluid">
+              <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title mr-5">Listes des Demandes</h3>
+                
+                
+               
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Valeur</th>
+                      <th>Client</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                {% for demande in demandes %}
+                    <tr>
+                        <td>{{ demande.id }}</td>
+                        <td>{{ demande.somme }}</td>
+                        <td>{{ demande.getClient() }}</td>
+                        <td>
+                          <!--  path('app_user_show', {'id': user.id})  show-->
+                          <!--  path('app_user_edit', {'id': user.id}) edit-->
+                             
+                            <a class="btn btn-info btn-sm" href="{{path('admin.valider', {'id': demande.id})}}">
+                              Valider
+                          </a>
+                        </td>
+                    </tr>
+                {% else %}
+            <tr>
+                <td colspan="4">Aucun Demande de versement</td>
+            </tr>
+        {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+{% endblock %}

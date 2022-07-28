@@ -1,0 +1,54 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Mon Parking {% endblock %}
+
+
+{% block body %}
+       <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="wishlist-content">
+                            <form action="#">
+                                <div class="wishlist-table table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="product-remove"><span class="nobr">Retirer</span></th>
+                                                <th class="product-name"><span class="nobr">No Place</span></th>
+                                                <th class="product-price"><span class="nobr"> Matricule </span></th>
+                                                <th class="product-stock-stauts"><span class="nobr"> Debut </span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for parking in parkings %}
+                                            <tr>
+                                                <td class="product-remove"><a href="{{ path('app_parking_delete', {'id': parking.id})}}">×</a></td>
+                                                <td class="product-name"><a href="#">{{ parking.place.nopark }}</a></td>
+                                                <td class="product-price"><span class="amount">{{ parking.matricule }}</span></td>
+                                                <td class="product-stock-status"><span class="wishlist-in-stock">{{ parking.debut ? parking.debut|format_datetime() }}</span></td>
+                                               
+                                            </tr>
+
+                                        </tbody>
+                                             {% else %}
+                                         <tfoot>
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <div class="wishlist-share">
+                                                            <h4 class="wishlist-share-title">Pas de Parking </h4>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                        </tfoot>
+                                                {% endfor %}
+                                    </table>
+                                </div>  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+ 

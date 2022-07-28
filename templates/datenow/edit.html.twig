@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Datenow{% endblock %}
+
+{% block body %}
+    <h1>Edit Datenow</h1>
+
+    {{ include('datenow/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_datenow_index') }}">back to list</a>
+
+    {{ include('datenow/_delete_form.html.twig') }}
+{% endblock %}

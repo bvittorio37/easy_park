@@ -1,0 +1,14 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Edit Portefeuil{% endblock %}
+
+{% block body %}
+    
+    <div class="col-md-1">
+    <h6>  {% if app.session.get('portefeuil') %}  {{app.session.get('portefeuil').solde }}{% endif %} </h6>
+     {{ include('portefeuil/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+   
+
+    
+{% endblock %}

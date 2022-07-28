@@ -1,0 +1,38 @@
+{% extends 'adminTemplate.html.twig' %}
+
+{% block title %}Desactiver Place{% endblock %}
+
+{% block body %}
+
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-primary">
+                <div class="card-header">
+                    <h1 class="card-title">Desactiver une place</h1>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {{ form_start(form) }}
+                    <div class="card-body">
+                    <div class="form-group">
+                        {{ form_label(form.place) }}
+                        {{form_widget(form.place, { 'attr': {'class': 'form-control'} }) }}
+
+                    </div>
+                   
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Desactiver</button>
+                    </div>
+                {{ form_end(form) }}
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+</section>
+    
+{% endblock %}

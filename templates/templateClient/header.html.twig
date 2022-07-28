@@ -1,0 +1,74 @@
+        <header id="header" class="htc-header header--3 bg__white">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
+                            <div class="logo">
+                                {% if app.user %}
+                                <a href="{{path('app_logout')}}">
+                                    Deconnecter
+                                </a>
+                                {% else %}
+                                    <a href="{{path('app_login')}}">
+                                    Connectez-Vous
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Start MAinmenu Ares -->
+                        <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
+                            <nav class="mainmenu__nav hidden-xs hidden-sm">
+                                <ul class="main__menu">
+                                    <li class="drop"><a href="{{ path('app_place_index')}}">Parking</a>
+                                    {% if app.user %}
+                                        <ul class="dropdown">
+                                            <li><a href="{{path('app_parking_index')}}">Mes Parkings</a></li>
+                                        </ul>
+                                    {% endif %}
+                                    </li>
+                                    
+                                    {% if app.user %}
+
+                                    <li class="drop "><a >Portefeuil</a>
+                                    
+                                        <ul class="dropdown">
+                                            <li><a href=" # ">Versements non Validés</a></li>
+                                            <li><a href="{{path('demande.verser')}}">Verser</a></li>
+                                        </ul>
+                                    </li>
+                                   
+                                    
+
+
+                                    {% endif %}
+  
+                                </ul>
+                            </nav>
+                     
+                        </div>  
+                        <!-- End MAinmenu Ares -->
+
+                         <div> <p classe="userKo" data-parking="">  
+                            {% if app.user %}
+                             {{ app.user}} : {{ app.user.portefeuil.solde| default("0") }} Ar ----
+                            {% endif %}
+                            </p>
+                         </div>
+                        <div class="col-md-2 col-sm-4 col-xs-3">  
+                            <ul class="menu-extra">
+                              
+                                <li class="drop toggle__menu hidden-xs hidden-sm"><span class="ti-menu"></span> 
+                                    <a href=""></a>
+                                </li>
+                                       
+                
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mobile-menu-area"></div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
